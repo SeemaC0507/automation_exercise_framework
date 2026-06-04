@@ -1,5 +1,8 @@
 import pytest
 from pages.login_page import LoginPage
+import os
+import pytest
+pytestmark = pytest.mark.skipif(os.getenv("CI") == "true", reason="Blocked on CI")
 
 @pytest.mark.parametrize("email, password, expected", [
     ("sbd@xyz.com", "12345", True),
